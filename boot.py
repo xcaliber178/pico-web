@@ -1,3 +1,5 @@
-#import webrepl, wifi, _thread
-#_thread.start_new_thread(wifi.connect(), ())
+#import webrepl
+#import wifi
+
+#wifi.connect()
 #webrepl.start()
