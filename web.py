@@ -41,7 +41,7 @@ def start():
             
             lan_check = re.search('192.168.1.*', addr[0])
             if lan_check != None:
-                cl.settimeout(None)
+                cl.settimeout(5) #Just in case client hangs.
                 print('\nLAN client connected from:', addr, count)
             else:
                 cl.settimeout(1.3)
