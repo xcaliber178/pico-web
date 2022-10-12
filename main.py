@@ -3,9 +3,9 @@ import wifi
 import webrepl
 import ntptime
 import web
-import _thread
+from machine import Pin
 
-led = machine.Pin("LED", machine.Pin.OUT)
+led = Pin("LED", Pin.OUT)
 led.off()
 
 cpufreq.set(133)
