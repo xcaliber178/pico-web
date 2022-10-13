@@ -8,19 +8,29 @@
         <meta name="description" content="A learning experiment running on a Raspberry Pi Pico W">
         <link rel="stylesheet" href="main.css">
     </head>
+    
     <body> 
-        <h1>pico.geisel.tech</h1>
+        <h1 style="padding-top: 1rem">pico.geisel.tech</h1>
         
             <h2>A learning experiment running on a Raspberry Pi Pico W</h2>
                 <p>
-                    This site is hosted entirely from a Raspberry Pi Pico W sitting on my desk. I'll keep adding little test items every now and then. Things I'm testing are avalible below. Not everything will work completely right all the time I'm sure, but that's part of the process!
+                    This site is hosted entirely from a Raspberry Pi Pico W sitting on my desk. I'll keep adding little test items every now and then. Things I'm testing are available below. Not everything will work completely right all the time I'm sure, but that's part of the process!
                 </p>
 
             <h3>RTC</h3>
+                <p>The RTC onboard the Pico W is polled at page load.</p>
                 <ul>
                     <li>Time at page load: {rtc} CST</li>
                     <li>Date at page load: {date}</li>
                 </ul>
+        
+            <h3>Webpage features</h3>
+                <ul>
+                    <li>The HTML document is stored on and served by the Pico W</li>
+                    <li>Styling is done from an external CSS file stored on and served by the Pico W</li>
+                    <li>The background image (assuming available screen size) is remotely pulled from <a href="https://geisel.tech/">https://geisel.tech</a></li>
+                </ul>
+        
             <h3>My Links</h3>
                 <ul>
                     <li><a href="https://github.com/xcaliber178/pico-web">Source on GitHub</a></li>
@@ -29,5 +39,7 @@
                     <li><a href="https://github.com/xcaliber178">GitHub</a></li>
                     <li><a href="https://www.linkedin.com/in/jonasgeisel/">LinkedIn</a></li>
                 </ul>
+        <article></article>
+        <footer><p>The MIT License (MIT) Copyright © 2022 Jonas Geisel</p></footer>
     </body>
 </html>
