@@ -6,78 +6,20 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title>pico.geisel.tech</title>
         <meta name="description" content="A learning experiment running on a Raspberry Pi Pico W">
-        <style>
-                html {
-                    background: #e6e9e9;
-                    background-image: linear-gradient(270deg, rgb(230, 233, 233) 0%, rgb(216, 221, 221) 100%);
-                    -webkit-font-smoothing: antialiased;
-                }
-
-                body {
-                    background: #fff;
-                    box-shadow: 0 0 4px darkblue;
-                    color: #545454;
-                    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-                    font-size: 16px;
-                    line-height: 1.5;
-                    margin: 0 auto;
-                    min-height: 85vh;
-                    max-width: 900px;
-                    padding: 2em 2em 4em;
-                }
-
-                h1, h2, h3, h4, h5, h6 {
-                    animation: fadein 2s;
-                    color: darkblue;
-                    font-weight: 600;
-                    line-height: 1.3;
-                }
-
-                h2 {
-                    margin-top: 1.3em;
-                }
-
-                p {
-                    animation: fadein 2s;
-                    color: darkslateblue
-                }
-
-                li {
-                    animation: fadein 2s;
-                    color: darkslateblue
-                }
-
-                a {
-                    animation: fadein 2s;
-                    color: #0083e8;
-                }
-
-                b, strong {
-                    font-weight: 600;
-                }
-
-                @keyframes fadein {
-                    0% {
-                        opacity: 0;
-                    }
-                    100% {
-                        opacity: 1;
-                    }
-                }
-        </style>
+        <link rel="stylesheet" href="main.css">
     </head>
     <body> 
         <h1>pico.geisel.tech</h1>
         
             <h2>A learning experiment running on a Raspberry Pi Pico W</h2>
                 <p>
-                    This site is hosted entirely from a Raspberry Pi Pico W sitting on my desk. I'll keep adding little test items every now and then. Things I'm testing are avalible below. Not everything will work 100% right all the time I'm sure, but that's part of the process!
+                    This site is hosted entirely from a Raspberry Pi Pico W sitting on my desk. I'll keep adding little test items every now and then. Things I'm testing are avalible below. Not everything will work completely right all the time I'm sure, but that's part of the process!
                 </p>
 
             <h3>RTC</h3>
                 <ul>
-                    <li>Time at page load: %s CST</li>
-                    <li>Date at page load: %s</li>
+                    <li>Time at page load: {rtc} CST</li>
+                    <li>Date at page load: {date}</li>
                 </ul>
             <h3>My Links</h3>
                 <ul>

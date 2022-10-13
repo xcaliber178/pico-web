@@ -5,13 +5,14 @@ import ntptime
 import web
 from machine import Pin
 
-led = Pin("LED", Pin.OUT)
+led = Pin('LED', Pin.OUT)
 led.off()
 
-cpufreq.set(133)
-
+cpufreq.set(150)
+print('')
 wifi.connect()
-#_thread.start_new_thread(ntptime.settime, ())
+print('')
 #webrepl.start()
 ntptime.settime()
+print('')
 web.start()

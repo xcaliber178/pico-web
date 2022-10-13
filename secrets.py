@@ -1,3 +1,3 @@
 #Wifi login
-SSID = "ssid"
-PASSWORD = "password"
+SSID = "The1Percent"
+PASSWORD = "0201096940"

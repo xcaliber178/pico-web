@@ -3,13 +3,10 @@ from rp2 import country
 from time import sleep
 import network
 import secrets
-import _thread
-sLock = _thread.allocate_lock()
-led = Pin("LED", Pin.OUT)
 
-def connect(SSID = secrets.SSID, PASSWORD = secrets.PASSWORD):
-    sLock.acquire()
-    
+led = Pin('LED', Pin.OUT)
+
+def connect(SSID = secrets.SSID, PASSWORD = secrets.PASSWORD):    
     #Wifi init
     print("Starting wifi...")
     country('US') #Region set to avoid issues
@@ -35,19 +32,15 @@ def connect(SSID = secrets.SSID, PASSWORD = secrets.PASSWORD):
     #Error handling
     if wlan.status() != 3:
         raise RuntimeError("Network connection failed! Status:", wlan.status())
-        sLock.release()
     else:
-        print("\n")
-        print("Connected!")
+        print("\nConnected!")
         status = wlan.ifconfig()
         print("SSID: " + SSID)
         print("IP Addr: " + status[0])
         print("Subnet: " + status[1])
         print("Gateway: " + status[2])
         print("DNS: " + status[3])
-        print("\n")
         sleep(2)
-        sLock.release()
 
 # Define blinking function for onboard LED to indicate error codes    
 def blink_onboard_led(num_blinks):
