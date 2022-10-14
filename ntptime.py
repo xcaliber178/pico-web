@@ -1,11 +1,11 @@
-import time as utime
 import socket
 import struct
-from machine import Pin, RTC
+import time as utime
+from machine import Pin
+from machine import RTC
 
 led = Pin('LED', Pin.OUT)
 
-# The NTP host can be configured at runtime by doing: ntptime.host = 'myhost.org'
 host = 'pool.ntp.org'
 
 def time():
@@ -16,6 +16,7 @@ def time():
     error = False
     fatal = False
     ntp_try = 0
+    
     while ntp_recv is False:
         addr = socket.getaddrinfo(host, 123)[0][-1]
         s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
@@ -23,27 +24,34 @@ def time():
             led.on()
             if ntp_try == 10:
                 from sys import exit
-                raise Exception('ExcessiveAttempts') 
+                raise Exception('ExcessiveAttempts')
+
             elif error:
                 print("Retrying...(", ntp_try, "/10)", sep='')
                 utime.sleep(1)
                 s.settimeout(2)
+
             else:
                 s.settimeout(2)
                 print("Connecting to NTP server...")
+
             res = s.sendto(NTP_QUERY, addr)
             msg = s.recv(48)
+
         except OSError as e:
             print("Error:", e)
             error = True
+
         except Exception as e:
             print("Fatal Error:", e)
             print("Exiting!")
             fatal = True
+
         else:
             ntp_recv = True
             error = False
             led.off()
+
         finally:
             s.close()
             ntp_try += 1
@@ -62,9 +70,11 @@ def time():
     if EPOCH_YEAR == 2000:
         # (date(2000, 1, 1) - date(1900, 1, 1)).days * 24*60*60
         NTP_DELTA = 3155673600
+
     elif EPOCH_YEAR == 1970:
         # (date(1970, 1, 1) - date(1900, 1, 1)).days * 24*60*60
         NTP_DELTA = 2208988800
+
     else:
         raise Exception('Unsupported epoch: {}'.format(EPOCH_YEAR))
 

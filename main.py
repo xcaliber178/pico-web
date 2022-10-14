@@ -1,6 +1,6 @@
 import cpufreq
 import wifi
-import webrepl
+#import webrepl
 import ntptime
 import web
 from machine import Pin

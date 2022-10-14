@@ -1,12 +1,12 @@
-from machine import Pin
-from time import sleep
-import urequests as requests
 import network
 import ubinascii
 import socket
 import re
 import cpufreq
 import ntptime
+import urequests as requests
+from machine import Pin
+from time import sleep
 
 led = Pin('LED', Pin.OUT)
 
@@ -20,6 +20,7 @@ def get_file(file_name):
 
 # Listen for connections
 def start():
+    count = 1
     print("Starting webserver...")
     #HTTP server with socket
     print("Opening socket...")
@@ -30,21 +31,21 @@ def start():
     s.listen(15)
     print("Listening on:", addr)
     blink_onboard_led(3)
-    
-    count = 1
     cpufreq.set(100)
+
     while True:
         try:
             print("\nWaiting for connection...\n")
             cl, addr = s.accept()
             print("Incoming...")
-            cpufreq.set(225)
             led.on()
+            cpufreq.set(225)
             
             lan_check = re.search('192.168.1.*', addr[0])
             if lan_check != None:
                 cl.settimeout(5) #Just in case client hangs.
                 print("LAN client connected from:", addr, "ID: {:03d}".format(count))
+                
             else:
                 cl.settimeout(1.3)
                 print("Remote client connected from:", addr, "ID: {:03d}".format(count))
