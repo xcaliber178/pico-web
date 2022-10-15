@@ -81,7 +81,7 @@ def time():
     return val - NTP_DELTA
 
 
-# There's currently no timezone support in MicroPython, and the RTC is set in UTC time.
+#RTC is set in UTC time.
 def settime():
     print("Starting NTP sync...")
     t = time()
